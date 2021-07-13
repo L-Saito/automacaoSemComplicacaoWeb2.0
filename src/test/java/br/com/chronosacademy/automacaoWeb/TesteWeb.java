@@ -1,6 +1,8 @@
 package br.com.chronosacademy.automacaoWeb;
 
 import br.com.chronosacademy.core.Driver;
+import br.com.chronosacademy.pages.CursoPage;
+import br.com.chronosacademy.pages.PrincipalPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -14,6 +16,8 @@ public class TesteWeb {
 
     WebDriver driver;
     Driver driverWeb;
+    PrincipalPage principalPage;
+    CursoPage cursoPage;
 
     @Before
     public void inicializaTeste(){
@@ -21,34 +25,29 @@ public class TesteWeb {
         driver = driverWeb.getDriver();
         driver.get("https://www.chronosacademy.com.br");
 
+        principalPage = new PrincipalPage(driver);
     }
     //@Ignore comando para ignorar o teste
     @Test
     public void primeiroTeste(){
-            //Exemplo de xpath inteiro e dpeois diminuido
-        //String xpathTitulo = "/html/body/div/div/div/div/div/section[2]/div[3]/div/div/div/div/div[1]/div/h4";
-        String xpathTitulo = "//section[2]//h4";
-        WebElement h4titulo = driver.findElement(By.xpath(xpathTitulo));
-        String titulo = h4titulo.getText();
+    //Exemplo de xpath inteiro e depois diminuido
+    //String xpathTitulo = "/html/body/div/div/div/div/div/section[2]/div[3]/div/div/div/div/div[1]/div/h4";
+        String titulo = principalPage.getTitulo();
 
-    //Comparar se o 'texto' está igual
+        //Comparar se o 'texto' está igual
         assertEquals("Porque Tempo É Conhecimento", titulo);
 
     }
-    @Ignore
+
+    //@Ignore
     @Test
     public void segundoTeste(){
 
-        String xpathBotao = "//section[2]/div[3]//a";
-        WebElement btnTitulo = driver.findElement(By.xpath(xpathBotao));
+        principalPage.clickBotao();
+        cursoPage = new CursoPage(driver);
+        String titulo = cursoPage.getTitulo2();
 
-        btnTitulo.click();
-
-        String xpathTitulo = "//section[2]//h2";
-        WebElement h2Titulo = driver.findElement(By.xpath(xpathTitulo));
-
-        assertEquals("AUTOMAÇÃO SEM COMPLICAÇÃO WEB 2.0", h2Titulo.getText());
-
+        assertEquals("AUTOMAÇÃO SEM COMPLICAÇÃO WEB 2.0", titulo);
     }
 
     @After
