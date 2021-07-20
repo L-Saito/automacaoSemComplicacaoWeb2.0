@@ -5,11 +5,8 @@ import br.com.chronosacademy.pages.CursoPage;
 import br.com.chronosacademy.pages.PrincipalPage;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import static org.junit.Assert.assertEquals;
 
 public class TesteWeb {
