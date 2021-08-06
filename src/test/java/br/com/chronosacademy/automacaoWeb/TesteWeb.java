@@ -19,9 +19,9 @@ public class TesteWeb {
     @Before
     public void inicializaTeste(){
         driverWeb = new Driver("chrome");
-        driver = driverWeb.getDriver();
-        driver.get("https://www.chronosacademy.com.br");
+        driver = Driver.getDriver();
 
+        driver.get("https://www.chronosacademy.com.br");
         principalPage = new PrincipalPage(driver);
     }
     //@Ignore comando para ignorar o teste
