@@ -36,7 +36,12 @@ public class LoginSteps {
         loginPage.clickDivFechaModal();
     }
     @Entao("a janela modal deve ser fechada")
-    public void aJanelaModalDeveSerFechada() {
+    public void aJanelaModalDeveSerFechada() throws Exception {
+        try {
+            loginPage.invisibilityOfBtnFechar();
+        } catch (Exception e){
+            throw new Exception("A janela modal não foi fechada");
+        }
 
     }
 
