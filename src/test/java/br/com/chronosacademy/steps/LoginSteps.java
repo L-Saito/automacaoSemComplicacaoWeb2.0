@@ -2,6 +2,7 @@ package br.com.chronosacademy.steps;
 
 
 import br.com.chronosacademy.core.Driver;
+import br.com.chronosacademy.enums.Browser;
 import br.com.chronosacademy.pages.LoginPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -18,7 +19,7 @@ public class LoginSteps {
     //Before cucumber executa antes de cada teste
     @Before
     public void iniciaNavegador(){
-        new Driver("chrome");
+        new Driver(Browser.CHROME);
     }
 
     @After
