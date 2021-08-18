@@ -14,7 +14,7 @@ public class LoginPage {
     }
 
     public void clickBtnLogin(){
-        //Visibility = aguarda um tmepo para o elemento aparecer na tela
+        //Visibility = aguarda um tempo para o elemento aparecer na tela
         Driver.visibilityOf(loginMap.btnLogin);
         loginMap.btnLogin.click();
     }
