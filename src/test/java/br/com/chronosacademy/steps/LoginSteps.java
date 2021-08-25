@@ -3,7 +3,10 @@ package br.com.chronosacademy.steps;
 
 import br.com.chronosacademy.core.Driver;
 import br.com.chronosacademy.enums.Browser;
+import br.com.chronosacademy.maps.LoginMap;
+import br.com.chronosacademy.maps.NewAccountMap;
 import br.com.chronosacademy.pages.LoginPage;
+import br.com.chronosacademy.pages.NewAccountPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
@@ -15,6 +18,8 @@ import java.util.Map;
 
 public class LoginSteps {
     LoginPage loginPage;
+    NewAccountPage newAccountPage;
+    //NewAccountMap newAccountMap;
 
     //Before cucumber executa antes de cada teste
     @Before
@@ -31,6 +36,8 @@ public class LoginSteps {
         Driver.getDriver().get("https://www.advantageonlineshopping.com/");
         loginPage = new LoginPage();
         loginPage.clickBtnLogin();
+        loginPage.visibilityOfBtnFechar();
+        loginPage.aguardaLoader();
     }
     @Quando("for realizado um clique fora da modal")
     public void forRealizadoUmCliqueForaDaModal() {
@@ -43,23 +50,22 @@ public class LoginSteps {
         } catch (Exception e){
             throw new Exception("A janela modal não foi fechada");
         }
-
     }
-
     @Quando("for realizado um clique icone de fechar da modal")
     public void forRealizadoUmCliqueIconeDeFecharDaModal() {
         loginPage.clickBtnFechar();
-        
     }
+
 
     @Quando("for realizado um clique em Create New Account")
     public void forRealizadoUmCliqueEmCreateNewAccount() {
-        loginPage.cliclLinkCreateAccount();
+        loginPage.clickLinkCreateAccount();
     }
 
     @Entao("a pagina Create Account deve ser exibida")
     public void aPaginaCreateAccountDeveSerExibida() {
-        
+        newAccountPage = new NewAccountPage();
+        Assert.assertEquals("CREATE ACCOUNT", newAccountPage.getTextNewAccount());
     }
 
     @Quando("os campos de login forem preenchidos com os valores")
@@ -73,17 +79,16 @@ public class LoginSteps {
 
         //if (!remember) - com a exclamação, ele coloca como negação ou false
         if (remember) loginPage.clickInpRemember();
-
     }
 
     @Quando("for realizado o clique no botao sign in")
     public void forRealizadoOCliqueNoBotaoSignIn() {
-        loginPage.clickBtnSeignIn();
+        loginPage.clickBtnSignIn();
     }
 
     @Entao("deve ser possivel logar no sistema")
     public void deveSerPossivelLogarNoSistema() {
-        
+
     }
 
     @Entao("o sistema devera exibir uma mensagem de erro")
