@@ -10,7 +10,6 @@ public class LoginPage {
     public LoginPage() {
         loginMap = new LoginMap();
         PageFactory.initElements(Driver.getDriver(), loginMap);
-
     }
 
     public void clickBtnLogin(){
@@ -20,32 +19,48 @@ public class LoginPage {
     }
 
     public void clickBtnFechar(){
+        //Driver.visibilityOf(loginMap.btnFechar);
         loginMap.btnFechar.click();
     }
 
     public void clickDivFechaModal(){
+        //Driver.visibilityOf((loginMap.divFechaModal));
         loginMap.divFechaModal.click();
     }
 
     public void setInpUserName(String username){
-        loginMap.inpUserName.sendKeys(username);
+        //Driver.visibilityOf(loginMap.inpUserName);
+        if (username != null){
+            loginMap.inpUserName.sendKeys(username);
+        }
+
     }
 
     public void setInpPassword(String password){
-        loginMap.inpPassword.sendKeys(password);
+        //Driver.visibilityOf(loginMap.inpPassword);
+        if (password != null) {
+            loginMap.inpPassword.sendKeys(password);
+        }
     }
     public void clickInpRemember(){
-        loginMap.inpRemember.click();
+        //Driver.visibilityOf(loginMap.inpRemember);
+       loginMap.inpRemember.click();
+
     }
-    public void clickBtnSeignIn(){
+    public void clickBtnSignIn(){
+        //Driver.visibilityOf(loginMap.btnSignIn);
         loginMap.btnSignIn.click();
+
     }
-    public void cliclLinkCreateAccount(){
+    public void clickLinkCreateAccount(){
+        Driver.visibilityOf(loginMap.linkCreateAccount);
         loginMap.linkCreateAccount.click();
     }
 
     public boolean isBtnSignIn(){
+        //Driver.visibilityOf(loginMap.btnSignIn);
         return loginMap.btnSignIn.isEnabled();
+
     }
     public void visibilityOfBtnFechar(){
         Driver.visibilityOf(loginMap.btnFechar);
@@ -53,4 +68,9 @@ public class LoginPage {
     public void invisibilityOfBtnFechar(){
         Driver.invisibilityOf(loginMap.btnFechar);
     }
+    public void aguardaLoader(){
+        Driver.attributeChange(loginMap.divLoader, "display", "nome");
+    }
+
+
 }
