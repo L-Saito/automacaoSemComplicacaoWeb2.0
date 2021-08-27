@@ -20,7 +20,7 @@ Funcionalidade: login
     Quando for realizado um clique em Create New Account
     Entao a pagina Create Account deve ser exibida
 
-  @login1
+  @loginComSucesso
   Esquema do Cenario: Realizar login <identificacao>
         #Agrupamento de cenários
     Quando os campos de login forem preenchidos com os valores
@@ -30,11 +30,11 @@ Funcionalidade: login
     Quando for realizado o clique no botao sign in
     Entao deve ser possivel logar no sistema
     Exemplos:
-      | identificacao           | usuario | senha | remember |
-      | com campos obrigatorios | chronos | senha | false    |
-      | todos os campos         | chronos | senha | true     |
+      | identificacao           | usuario | senha    | remember |
+      | com campos obrigatorios | saito   | Senha321 | false    |
+      | todos os campos         | saito   | Senha321 | true     |
 
-  @login2
+  @loginComErro
   Esquema do Cenario: Realizar login com <identificacao>
     Quando os campos de login forem preenchidos com os valores
       | usuario  | <usuario>  |
@@ -44,8 +44,8 @@ Funcionalidade: login
     Entao o sistema devera exibir uma mensagem de erro
     Exemplos:
       | identificacao    | usuario  | senha    | remember |
-      | usuario invalido | invalido | senha    | false    |
-      | senha invalida   | chrnos   | invalida | false    |
+      | usuario invalido | invalido | Senha321 | false    |
+      | senha invalida   | saito    | invalida | false    |
 
   @dadosEmBranco
   Esquema do Cenario: Realizar login com <identificacao>
